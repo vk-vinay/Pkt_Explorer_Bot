@@ -1,0 +1,11 @@
+*.pyc
+.mypy_cache
+*.log
+*.sql
+*.env
+.idea/
+venv/
+env_variables
+/coverage
+__pycache__*
+__pycache__/
