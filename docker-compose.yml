@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  pktbot:
+    container_name: pktbot
+    build:
+      context: .
+      dockerfile: DockerFile
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+
+networks:  # <-- and here
+  docker_default:
+        external: true
+
+

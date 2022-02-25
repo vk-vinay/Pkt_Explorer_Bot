@@ -1,0 +1,19 @@
+FROM python:3.8.1-alpine
+RUN mkdir /code
+WORKDIR /code
+RUN apk update && apk upgrade
+RUN apk add --no-cache bash\
+                       python \
+                       pkgconfig \
+                       git \
+                       gcc \
+                       openldap \
+                       libcurl \
+                       python2-dev \
+                       gpgme-dev \
+                       libc-dev \
+    && rm -rf /var/cache/apk/*
+ADD requirements.txt /code/
+RUN pip install --upgrade pip && pip install -r requirements.txt
+ADD . /code/
+RUN python bot.py
